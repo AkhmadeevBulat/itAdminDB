@@ -3,3 +3,4 @@ venv-server/
 settings.ini
 __pycache__/
 test.py
+itAdminDB without cleaning the terminal.py
