@@ -17,7 +17,7 @@ def parse_string(string: str) -> str:  # Каждые n символов пер�
     return new_string
 
 
-def beautifulTable(table) -> PrettyTable:
+def beautifulTable(table) -> PrettyTable:  # Красивая таблица
     myTable = None
     listFields = []
     listValues = []
@@ -45,7 +45,7 @@ def beautifulTable(table) -> PrettyTable:
         return myTable
 
 
-def clear():
+def clear():  # Чистка терминала\консоли в зависимости от ОС
     if platform == 'linux' or platform == 'linux2':
         system('clear')
     elif platform == 'darwin':

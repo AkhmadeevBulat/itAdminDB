@@ -11,6 +11,20 @@ def main():
     sleep(1)
 
     # 2 Этап: Чтение файла
+    # Проверка, есть ли такой файл. Если нет, создать его.
+    if not os.path.isfile('settings.ini'):
+        with open('settings.ini', 'w') as file:
+            file.write('[PARAMETERS]\n\n; IP-адрес сервера\nAD_SERVER=\n\n'
+                       '; Логин и пароль пользователя AD для подключения к AD. Ему не нужны ни какие права.\n'
+                       'AD_USER=\nAD_PASSWORD=\n\n; Папка, где будет производится поиск\nPATH=\n\n'
+                       '; Группа, с которым будет производится сравнения и давать доступ\nAD_ADMIN_GROUP=\n\n'
+                       '; IP-адрес сервера базы данных\nDB_SERVER=\n\n; Порт базы данных\nPORT=\n\n; Имя базы данных\n'
+                       'DB_DATABASE=\n\n; Кодировка базы данных\nCHARSET=\n\n'
+                       '; Логин и пароль пользователя базы данных\n'
+                       'DB_USER=\nDB_PASSWORD=\n\n')
+            file.close()
+        print('Создан файл настроек. Пожалуйста введите в нем данные!')
+        inputEndExit()
     configFile = readFile()
 
     # 3 Этап: Проверка пользователя, который запустил программу, в Active Directory (LDAP)
