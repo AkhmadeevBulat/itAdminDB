@@ -1,5 +1,4 @@
 import os
-import settings
 import datetime
 
 
@@ -39,16 +38,36 @@ def checkingDateTime(days: int):
             continue
 
 
-def createFolder(name):
+def createFolder(name):  # Создать папку если его нет
     if not os.path.exists(name):
         os.mkdir(name)
     return name
 
 
 def main():
+    # Проверка, есть ли файл settings.py, если нет - создать ее
+    if not os.path.isfile('settings.py'):
+        with open('settings.py', 'w', encoding='utf-8') as file:
+            file.write('dbServer = None\nport = None\ndbDataBases = []\ncharset = None\ndbUser = None\n'
+                       'dbPassword = None\nexpirationDate = None')
+            file.close()
+        print('Создан файл настроек. Пожалуйста введите в нем данные!')
+        exit()
+
+    import settings
+
+    # Проверка на целостность данных в settings.py
+    if settings.port is None or settings.dbUser is None or settings.dbServer is None:
+        print('Создан файл настроек. Пожалуйста введите в нем данные!')
+        exit()
+
     # Задаем необходимые значения от файла settings.py
     variables = Variables(settings.dbServer, settings.port, settings.dbDataBases,
                           settings.charset, settings.dbUser, settings.dbPassword)
+
+    # Проверка, есть ли папка, если нет - создать эту папку
+    if not os.path.isdir('../dump'):
+        os.mkdir('../dump')
 
     # Переход в папку с dump'ами
     os.chdir('../dump/')
