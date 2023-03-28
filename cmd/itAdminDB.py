@@ -13,7 +13,7 @@ def main():
     # 2 Этап: Чтение файла
     # Проверка, есть ли такой файл. Если нет, создать его.
     if not os.path.isfile('settings.ini'):
-        with open('settings.ini', 'w') as file:
+        with open('settings.ini', 'w', encoding='utf-8') as file:
             file.write('[PARAMETERS]\n\n; IP-адрес сервера\nAD_SERVER=\n\n'
                        '; Логин и пароль пользователя AD для подключения к AD. Ему не нужны ни какие права.\n'
                        'AD_USER=\nAD_PASSWORD=\n\n; Папка, где будет производится поиск\nPATH=\n\n'
