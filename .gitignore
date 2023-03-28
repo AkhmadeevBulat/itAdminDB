@@ -6,3 +6,5 @@ cmd/test.py
 cmd/itAdminDB without cleaning the terminal.py
 dumpScript/scripts/settings.py
 web/
+dumpScript/dump/*
+test.py
