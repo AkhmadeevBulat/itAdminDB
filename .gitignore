@@ -1,6 +1,7 @@
 .idea/
 venv-server/
 cmd1.0/settings.ini
+cmd2.0/settings.ini
 __pycache__/
 cmd1.0/test.py
 cmd1.0/itAdminDB without cleaning the terminal.py
